@@ -1,0 +1,12 @@
+<!-- books-list.component.html -->
+
+<div class="book-container" *ngFor="let book of books">
+  <div class="book-details">
+    <h2>{{ book.name }}</h2>
+    <p>Author: {{ book.author }}</p>
+    <p class="book-tags">Tags: {{ book.tags }}</p>
+    <p>Quantity: {{ book.quantity }}</p>
+  </div>
+  <img *ngIf="book.image" class="book-image" [src]="book.image" alt="Book Image">
+  <button (click)="removeBook(book)">Remove</button>
+</div>

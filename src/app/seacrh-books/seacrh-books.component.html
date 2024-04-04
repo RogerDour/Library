@@ -1,0 +1,21 @@
+<div class="search-container">
+  <h2>Search Books</h2>
+  <div>
+    <input type="text" class="search-input" [(ngModel)]="searchTerm" placeholder="Enter book title">
+    <button class="search-button" (click)="searchBooks()">Search</button>
+  </div>
+</div>
+
+<div class="search-results" *ngIf="searchResults.length > 0">
+  <h3>Search Results</h3>
+  <ul>
+    <li class="book-item" *ngFor="let book of searchResults">
+      <img [src]="book.volumeInfo.imageLinks?.thumbnail" alt="Book cover">
+      <div>
+        <p class="book-title">Title: {{ book.volumeInfo.title }}</p>
+        <p>Authors: {{ book.volumeInfo.authors }}</p>
+        <p class="book-description">Description: {{ book.volumeInfo.description }}</p>
+      </div>
+    </li>
+  </ul>
+</div>

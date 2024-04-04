@@ -1,1 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+/* styles.css */
+.dark-theme {
+    background-color: #333;
+    color: #fff;
+    /* Add more dark mode styles here */
+  }
+  
