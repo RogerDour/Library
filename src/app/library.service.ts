@@ -7,7 +7,6 @@ import { Observable, Subject } from 'rxjs';
 })
 export class LibraryService {
 
-  private books: any[] = [];
   private apiUrl = 'https://www.googleapis.com/books/v1/volumes';
   private bookAddedSubject: Subject<any[]> = new Subject<any[]>();
 
@@ -30,11 +29,11 @@ export class LibraryService {
     let books: any[] = this.getBooksFromStorage();
     books.push(book);
     this.updateBooksInStorage(books);
-    this.bookAddedSubject.next(books.slice()); // Emitting a copy of the updated books array
+    this.bookAddedSubject.next(books.slice());
   }
 
   getBooks(): any[] {
-    return this.getBooksFromStorage(); // Return a copy of the books array
+    return this.getBooksFromStorage();
   }
 
   getBookAddedObservable(): Observable<any[]> {
@@ -48,19 +47,7 @@ export class LibraryService {
 
   public updateBooksInStorage(books: any[]): void {
     localStorage.setItem('books', JSON.stringify(books));
-    this.bookAddedSubject.next(books.slice()); // Emitting a copy of the updated books array
+    this.bookAddedSubject.next(books.slice());
   }
-  
-  // addBook(book: any): void {
-  //   this.books.push(book);
-  //   this.bookAddedSubject.next(this.books.slice()); // Emitting a copy of the updated books array
-  // }
 
-  // getBooks(): any[] {
-  //   return this.books.slice(); // Return a copy of the books array
-  // }
-
-  // getBookAddedObservable(): Observable<any[]> {
-  //   return this.bookAddedSubject.asObservable();
-  // }
 }
